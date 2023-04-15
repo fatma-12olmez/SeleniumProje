@@ -13,12 +13,12 @@ public class E12_Locators extends TestBase {
         // 2- Add Element butonuna basin
         driver.findElement(By.xpath("//button[@onclick='addElement()']")).click();
         //3. Delete butonu’nun gorunur oldugunu test edin
-      WebElement deleteButton= driver.findElement(By.xpath("//button[@onclick='deleteElement()']"));
-      deleteButton.isDisplayed();
+        WebElement deleteButton = driver.findElement(By.xpath("//button[@onclick='deleteElement()']"));
+        deleteButton.isDisplayed();
         //4. Delete tusuna basin
         driver.findElement(By.xpath("//button[@onclick='deleteElement()']")).click();
         //5. “Add/Remove Elements” yazisinin gorunur oldugunu test edin
-       WebElement removeElements= driver.findElement(By.xpath("//h3"));
-       removeElements.isDisplayed();
+        WebElement removeElements = driver.findElement(By.xpath("//h3"));
+        removeElements.isDisplayed();
     }
 }

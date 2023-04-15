@@ -3,11 +3,14 @@ package utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -31,7 +34,7 @@ public abstract class TestBase {
     @After
     public void tearDown() throws Exception {
         bekle(3);
-     //   driver.quit();
+        //   driver.quit();
     }
 
     //HARD WAIT METHOD...
@@ -90,15 +93,34 @@ public abstract class TestBase {
     //Indeks 0'dan baslar
     //Girilen indeksteki windows handle degerini alarak o sayfaya gecis yapar
 
-  //switchToWindow
+    //switchToWindow
     public static void switchToWindow(int sayfaIndeksi) {
         List<String> windowHandleList = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(windowHandleList.get(sayfaIndeksi));
 
     }
+
     //switchToWindow2
     public static void window(int sayi) {
         driver.switchTo().window(driver.getWindowHandles().toArray()[sayi].toString());
+    }
+
+    //EXPLICIT WAIT METHODS
+
+    //Visible Wait
+    public static void visibleWait(WebElement element,int sayi){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+    //Alert Wait
+    public static void alertWait(int sayi){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
+        wait.until(ExpectedConditions.alertIsPresent());
+    }
+    //VisibleElementLocator Wait
+    public static void visibleWait(By locator, int sayi){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
 }

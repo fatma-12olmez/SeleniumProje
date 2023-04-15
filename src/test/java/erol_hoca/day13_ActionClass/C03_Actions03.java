@@ -7,9 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import utilities.TestBase;
 
-import javax.swing.*;
-
-public class C03_Actions extends TestBase {
+public class C03_Actions03 extends TestBase {
     @Test
     public void actions() {
         //https://techproeducation.com adresine gidin
